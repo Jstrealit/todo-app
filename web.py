@@ -8,6 +8,17 @@ def add_todo():
     functions.write_todos(todos)
 
 st.title("My Todo App")
+# Path to the directory containing the file
+directory_path = r"dist"
+
+# Get the list of files in the directory
+files = os.listdir(directory_path)
+
+# Display a download button for each file
+for file_name in files:
+    file_path = os.path.join(directory_path, file_name)
+    if st.download_button(label=f"Download Desktop APP", data=open(file_path, 'rb'), file_name=file_name):
+        pass  # Optional: You can add any additional actions here after the file is downloaded
 st.subheader("This is my todo app.")
 st.write("This app is to increase your productivity.")
 
